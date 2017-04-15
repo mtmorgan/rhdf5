@@ -1,0 +1,4 @@
+src/*o
+src/hdf5/
+src/libhdf5ForBioC.a
+.Rhistory
