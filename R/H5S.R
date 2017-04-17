@@ -145,7 +145,10 @@ H5Sselect_index <- function( h5space, index ) {
         stop("negative indices and 0 not supported.")
       }
       ind <- sort(unique(index[[i]]))
-      I <- c(1,which(ind[seq_len(length(ind)-1)+1]-1 != ind[seq_len(length(ind)-1)])+1)
+      if (length(ind)) {
+          test <- ind[seq_len(length(ind)-1)+1]-1 != ind[seq_len(length(ind)-1)]
+          I <- c(1, which(test) + 1)
+      } else I <- 1
       start[[i]] <- ind[I] - 1
       I <- c(I,length(ind)+1)
       count[[i]] <- I[seq_len(length(I)-1)+1] - I[seq_len(length(I)-1)]
